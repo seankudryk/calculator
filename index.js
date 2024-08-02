@@ -1,3 +1,9 @@
+const getOperator = document.querySelectorAll("#operator-button");
+const operatorButtonContainer = document.querySelector("#calculator-opeartor-button-container");
+const numberButtonContainer = document.querySelector("#calculator-number-button-container")
+const displayText = document.querySelector("#display-text");
+const seven = document.querySelector("#seven");
+
 const add = (x, y) => {
     return x + y;
 }
@@ -30,4 +36,19 @@ const operate = (operator, firstNumber, nextNumber) => {
     }
 };
 
-console.log(operate("add", 5, 4));
+let numberArray = []; //array used to push the value clicked by the user - that array then has join and parseInt called on it produce an integer value for calculation
+
+numberButtonContainer.addEventListener("click", (e) => {
+    numberArray.push(e.target.textContent);
+    firstNumber = parseInt(numberArray.join(''));
+    displayText.textContent = firstNumber;
+});
+
+operatorButtonContainer.addEventListener("click", (eventTarget) => {
+
+    console.log(eventTarget.textContent);
+
+});
+
+
+
