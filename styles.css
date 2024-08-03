@@ -78,6 +78,7 @@ body {
     margin: 2px;
     background-color: rgb(208, 208, 208);
     font-size: 40px;
+    border-radius: 9px;
 }
 
 .zero-button {
@@ -90,18 +91,22 @@ body {
     margin: 2px;
     background-color: rgb(208, 208, 208);
     font-size: 40px;
-    width: 120px;
+    width: 244px;
 }
 
 #operator-button {
-    margin-bottom: 4px;   
+    margin: 2px;
 }
 
 .operator-button:first-child {
-    margin-top: 4px;
+    margin-top: 6px;
 }
 
 .calculator-button:active {
     background-color: black;
     color: white;
+}
+
+#clear-button {
+    font-size: 32px;
 }
