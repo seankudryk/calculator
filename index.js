@@ -5,6 +5,7 @@ const numberButtons = document.querySelector("#number-buttons");
 const displayText = document.querySelector("#display-text");
 const seven = document.querySelector("#seven");
 const clearButton = document.querySelector("#clear-button");
+const equalsButton = document.querySelector("#equals-button");
 
 const add = (x, y) => {
     return x + y;
@@ -38,24 +39,55 @@ const operate = (operator, firstNumber, nextNumber) => {
     }
 };
 
+const resetNextNumber = () => {
+
+}
+
 let numberArray = []; //array used to push the value clicked by the user - that array then has join and parseInt called on it produce an integer value for calculation
 
 numberButtons.addEventListener("click", (e) => {
+    let target = e.target;
+
     if (numberArray.length > 8) {
         alert("Number can not be more than 8 digits long");
     } else {
-        numberArray.push(e.target.textContent);
+        numberArray.push(target.textContent);
         firstNumber = parseInt(numberArray.join(''));
         displayText.textContent = firstNumber;
     }  
+    console.log(firstNumber);
 });
+
+equalsButton.addEventListener("click", () => {
+    if (typeof nextNumber !== "number") { 
+        console.log("This will eventually just become something like 'return firstNumber + 0;'");
+    } else {
+        firstNumber = operate(operator, firstNumber, nextNumber);
+        displayText.textContent = firstNumber;
+        nextNumber = "";
+        console.log(`First Number: ${firstNumber}`);
+        console.log(`Next Number: ${nextNumber}`);
+    }
+});
+
+
 
 operatorButtonContainer.addEventListener("click", (e) => {
     let target = e.target;
 
     if (typeof firstNumber === "undefined") {
         alert("Please Select A Number Before Selecting An Operator");
-    } else if (typeof firstNumber === "number" && typeof nextNumber === "string") {
+    } else {
+        //when we click on an operator, if nextNumber isn't of type number, assign the value of firstNumber to nextNumber and set the value of firstNumber to not a number
+        if (typeof nextNumber !== "number") {
+            nextNumber = firstNumber;
+            firstNumber = "";
+            numberArray = [];
+            operator = target.textContent;
+            console.log(`First Number: ${firstNumber}`);
+            console.log(`Next Number: ${nextNumber}`);
+        }
+    /* else if (typeof firstNumber === "number" && typeof nextNumber === "string") {
         operator = target.textContent;
         nextNumber = firstNumber;
         firstNumber = "";
@@ -70,8 +102,10 @@ operatorButtonContainer.addEventListener("click", (e) => {
         console.log("firstNumber active, nextNumber active")
         console.log(firstNumber);
         console.log(nextNumber);
+    } */
     }
 });
+
 
 clearButton.addEventListener("click", () => {
     numberArray = [0]

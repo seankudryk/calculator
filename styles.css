@@ -54,7 +54,7 @@ body {
     --button-container-width: 500px;
 }
 
-#calculator-number-button-container {
+#operator-column {
     display: flex; 
     justify-content: center;
     align-items: center;
