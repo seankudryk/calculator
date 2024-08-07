@@ -12,7 +12,7 @@ const add = (x, y) => {
 }
 
 const subtract = (x, y) => {
-    return x - y;
+    return y - x;
 }
 
 const multiply = (x, y) => {
@@ -20,28 +20,25 @@ const multiply = (x, y) => {
 }
 
 const divide = (x, y) => {
-    return x / y;
+    return y / x;
 }
 
-let operator = ""; //value of the current operator
-let firstNumber; //value of the current first number (x)
-let nextNumber = ""; //value of the current second number (y)
+let operator;
+let storeOperatorValue;
+let firstNumber;
+let nextNumber;
 
 const operate = (operator, firstNumber, nextNumber) => {
     if (operator === "+") {
         return add(firstNumber, nextNumber);
     } else if (operator === "-") {
         return subtract(firstNumber, nextNumber);
-    } else if (operator === "*") {
+    } else if (operator === "x") {
         return multiply(firstNumber, nextNumber);
     } else if (operator === "/") {
         return divide(firstNumber, nextNumber);
     }
 };
-
-const resetNextNumber = () => {
-
-}
 
 let numberArray = []; //array used to push the value clicked by the user - that array then has join and parseInt called on it produce an integer value for calculation
 
@@ -50,12 +47,16 @@ numberButtons.addEventListener("click", (e) => {
 
     if (numberArray.length > 8) {
         alert("Number can not be more than 8 digits long");
-    } else {
-        numberArray.push(target.textContent);
-        firstNumber = parseInt(numberArray.join(''));
-        displayText.textContent = firstNumber;
-    }  
-    console.log(firstNumber);
+    } else if (typeof firstNumber === "number" && typeof nextNumber === "number") {
+
+    }
+
+    storeOperatorValue = operator;
+    numberArray.push(target.textContent);
+    firstNumber = parseInt(numberArray.join(''));
+    displayText.textContent = firstNumber; 
+    console.log(`First: ${firstNumber}`);
+    console.log(`Next: ${nextNumber}`);
 });
 
 equalsButton.addEventListener("click", () => {
@@ -65,52 +66,36 @@ equalsButton.addEventListener("click", () => {
         firstNumber = operate(operator, firstNumber, nextNumber);
         displayText.textContent = firstNumber;
         nextNumber = "";
-        console.log(`First Number: ${firstNumber}`);
-        console.log(`Next Number: ${nextNumber}`);
     }
 });
 
-
-
 operatorButtonContainer.addEventListener("click", (e) => {
     let target = e.target;
-
-    if (typeof firstNumber === "undefined") {
+    operator = target.textContent;
+    console.log(storeOperatorValue);
+    
+    if (typeof firstNumber !== "number") {
         alert("Please Select A Number Before Selecting An Operator");
-    } else {
-        //when we click on an operator, if nextNumber isn't of type number, assign the value of firstNumber to nextNumber and set the value of firstNumber to not a number
-        if (typeof nextNumber !== "number") {
-            nextNumber = firstNumber;
-            firstNumber = "";
-            numberArray = [];
-            operator = target.textContent;
-            console.log(`First Number: ${firstNumber}`);
-            console.log(`Next Number: ${nextNumber}`);
-        }
-    /* else if (typeof firstNumber === "number" && typeof nextNumber === "string") {
-        operator = target.textContent;
+    } else if (typeof nextNumber !== "number") {
         nextNumber = firstNumber;
         firstNumber = "";
+        numberArray = []; 
+    } else { 
+        let storeFirstNumber = firstNumber;
+        storeOperatorValue = operator;
+        firstNumber = operate(storeOperatorValue, firstNumber, nextNumber);
+        nextNumber = storeFirstNumber;
+        displayText.textContent = firstNumber;
         numberArray = [];
-        console.log("firstNumber active, nextNumber inactive");
-        console.log(firstNumber);
-        console.log(nextNumber);
-    } else if (typeof firstNumber === "number" && typeof nextNumber === "number") {
-        firstNumber = operate(operator, firstNumber, nextNumber);
-        nextNumber = "";
-        numberArray = [];
-        console.log("firstNumber active, nextNumber active")
-        console.log(firstNumber);
-        console.log(nextNumber);
-    } */
+        console.log(`First: ${firstNumber}`);
+        console.log(`Next: ${nextNumber}`);
     }
 });
 
 
 clearButton.addEventListener("click", () => {
     numberArray = [0]
-    firstNumber = 0;
-    displayText.textContent = firstNumber;  
+    firstNumber = "";
+    nextNumber = "";
+    displayText.textContent = 0;  
 });
-
-
