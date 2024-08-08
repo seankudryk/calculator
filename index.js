@@ -48,15 +48,13 @@ numberButtons.addEventListener("click", (e) => {
     if (numberArray.length > 8) {
         alert("Number can not be more than 8 digits long");
     } else if (typeof firstNumber === "number" && typeof nextNumber === "number") {
-
+        storeOperatorValue = operator;
     }
 
     storeOperatorValue = operator;
     numberArray.push(target.textContent);
     firstNumber = parseInt(numberArray.join(''));
     displayText.textContent = firstNumber; 
-    console.log(`First: ${firstNumber}`);
-    console.log(`Next: ${nextNumber}`);
 });
 
 equalsButton.addEventListener("click", () => {
@@ -72,7 +70,7 @@ equalsButton.addEventListener("click", () => {
 operatorButtonContainer.addEventListener("click", (e) => {
     let target = e.target;
     operator = target.textContent;
-    console.log(storeOperatorValue);
+    
     
     if (typeof firstNumber !== "number") {
         alert("Please Select A Number Before Selecting An Operator");
@@ -82,13 +80,12 @@ operatorButtonContainer.addEventListener("click", (e) => {
         numberArray = []; 
     } else { 
         let storeFirstNumber = firstNumber;
-        storeOperatorValue = operator;
+        console.log(storeOperatorValue);
         firstNumber = operate(storeOperatorValue, firstNumber, nextNumber);
-        nextNumber = storeFirstNumber;
+        nextNumber = firstNumber;
         displayText.textContent = firstNumber;
+        firstNumber = "";
         numberArray = [];
-        console.log(`First: ${firstNumber}`);
-        console.log(`Next: ${nextNumber}`);
     }
 });
 
