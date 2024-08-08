@@ -6,6 +6,7 @@ const displayText = document.querySelector("#display-text");
 const seven = document.querySelector("#seven");
 const clearButton = document.querySelector("#clear-button");
 const equalsButton = document.querySelector("#equals-button");
+const deleteButton = document.querySelector("#delete-button");
 
 const add = (x, y) => {
     return x + y;
@@ -103,3 +104,7 @@ clearButton.addEventListener("click", () => {
     nextNumber = "";
     displayText.textContent = 0;  
 });
+
+deleteButton.addEventListener("click", () => {
+    alert("This will delete the last digit in the entered number");
+})
