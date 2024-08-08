@@ -1,4 +1,6 @@
 body {
+    margin: 0px;
+    padding: 0px;
     background-color: rgb(52, 52, 70);
 }
 
@@ -18,28 +20,29 @@ body {
 #calculator-body {
     display: flex;
     flex-direction: column;
-    height: 655px;
+    height: 650px;
     width: 500px;
     border: 2px solid black;
     background-color: rgb(165, 165, 165);
     margin: 20px 0px;
     font-family: sans-serif;
-    filter: drop-shadow(8px 8px 0px #282550);
+    filter: drop-shadow(8px 8px 0px #4c478e);
 }
 
 #calculator-display-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: white;
+    background-color: rgb(253, 252, 192);
     width: 100%;
     height: 20%;
     box-sizing: border-box;
-    border: 6px solid rgb(0, 13, 44);
+    border: 6px solid rgb(9, 17, 38);
 }
 
 #calculator-display {
     height: 50%;
+    background-color: white;
     width: 80%;
     font-size: 80px;
     text-align: right;
@@ -53,14 +56,17 @@ body {
 
 #all-button-container {
     display: flex;
+    box-sizing: border-box;
+    border: 6px solid rgb(0, 13, 44);
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: rgb(120, 120, 120);
+    background-color: rgb(253, 252, 192);
     height: var(--button-container-height);
     width: var(--button-container-width);
     --button-container-height: 525px;
     --button-container-width: 500px;
+    padding: 20px;
 }
 
 #operator-column {
@@ -85,14 +91,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(var(--button-container-height) / 5 - 5px);
-    width: calc(var(--button-container-width) / 4 - 5px);
+    height: calc(var(--button-container-height) / 5 - 20px);
+    width: calc(var(--button-container-width) / 4 - 20px);
     box-sizing: border-box;
     border: 2px solid black;
     text-align: center;
     margin: 2px;
     background-color: rgb(255, 247, 247);
-    font-size: 40px;
+    font-size: 30px;
     border-radius: 9px;
     filter: drop-shadow(2px 2px 0px black);
 }
@@ -106,8 +112,8 @@ body {
     text-align: center;
     margin: 2px;
     background-color: rgb(255, 255, 255);
-    font-size: 40px;
-    width: 244px;
+    font-size: 30px;
+    width: 214px;
 }
 
 #equals-button {
@@ -135,11 +141,15 @@ body {
 }
 
 #clear-button {
-    font-size: 32px;
+    font-size: 28px;
 }
 
 #top-button-row .calculator-button {
     background-color: plum;
+}
+
+#top-button-row .calculator-button:active {
+    background-color: black;
 }
 
 #footer{
@@ -147,7 +157,7 @@ body {
     bottom: 0;
     left: 0;
     width: 300px;
-    background: rgb(3, 157, 208);
+    background: rgb(127, 228, 194);
     font-family: sans-serif;
     color: white;
     padding: 10px;
@@ -155,5 +165,6 @@ body {
     font-size: 25px;
     text-align: center;
     border-top-right-radius: 5px;
-    text-decoration: inherit;
 }
+
+

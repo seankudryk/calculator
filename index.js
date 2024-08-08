@@ -47,6 +47,10 @@ numberButtons.addEventListener("click", (e) => {
 
     if (numberArray.length > 8) {
         alert("Number can not be more than 8 digits long");
+        numberArray = [0]
+        firstNumber = "";
+        nextNumber = "";
+        displayText.textContent = 0;  
     } else if (typeof firstNumber === "number" && typeof nextNumber === "number") {
         storeOperatorValue = operator;
     }
@@ -83,7 +87,6 @@ operatorButtonContainer.addEventListener("click", (e) => {
         firstNumber = "";
         numberArray = []; 
     } else { 
-        let storeFirstNumber = firstNumber;
         console.log(storeOperatorValue);
         firstNumber = Math.round(operate(storeOperatorValue, firstNumber, nextNumber) * 1000) / 1000;
         nextNumber = firstNumber;
