@@ -7,6 +7,7 @@ const seven = document.querySelector("#seven");
 const clearButton = document.querySelector("#clear-button");
 const equalsButton = document.querySelector("#equals-button");
 const deleteButton = document.querySelector("#delete-button");
+const percentButton = document.querySelector("#percent-button");
 
 const add = (x, y) => {
     return x + y;
@@ -115,3 +116,26 @@ deleteButton.addEventListener("click", () => {
     firstNumber = parseInt(numberArray.join(''));
     displayText.textContent = firstNumber; 
 })
+
+let counter = 0;
+
+percentButton.addEventListener("click", percentButtonActive);
+
+function percentButtonActive() {
+    counter++;
+    if (counter === 1) {
+        alert("I don't do anything, you definitely shouldn't click me again.");
+    } else if (counter === 2) {
+        alert("Alright fine, I lied. Don't click me again though, I'm serious.");
+    } else if (counter === 3) {
+        alert ("What's your problem dude? Learn to respect boundaries.");
+    } else if (counter === 4) {
+        alert ("...");
+    } else if (counter === 5) {
+        alert ("...");
+    } else if (counter === 6) {
+        alert ("That's it...");
+    } else if (counter === 7) {
+        document.body.innerHTML = "";
+    }
+}

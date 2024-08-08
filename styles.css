@@ -172,4 +172,11 @@ body {
     border-top-right-radius: 5px;
 }
 
+.nice-work-div {
+    width: 50%;
+    margin: 0 auto;
+    font-size: 100px;
+    color: white;
+}
+
 
