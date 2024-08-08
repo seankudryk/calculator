@@ -61,7 +61,7 @@ equalsButton.addEventListener("click", () => {
     if (typeof nextNumber !== "number") { 
         console.log("This will eventually just become something like 'return firstNumber + 0;'");
     } else {
-        firstNumber = operate(operator, firstNumber, nextNumber);
+        firstNumber = Math.round(operate(operator, firstNumber, nextNumber) * 1000) / 1000;
         displayText.textContent = firstNumber;
         nextNumber = "";
     }
@@ -74,6 +74,10 @@ operatorButtonContainer.addEventListener("click", (e) => {
     
     if (typeof firstNumber !== "number") {
         alert("Please Select A Number Before Selecting An Operator");
+        numberArray = [0]
+        firstNumber = "";
+        nextNumber = "";
+        displayText.textContent = 0;  
     } else if (typeof nextNumber !== "number") {
         nextNumber = firstNumber;
         firstNumber = "";
@@ -81,7 +85,7 @@ operatorButtonContainer.addEventListener("click", (e) => {
     } else { 
         let storeFirstNumber = firstNumber;
         console.log(storeOperatorValue);
-        firstNumber = operate(storeOperatorValue, firstNumber, nextNumber);
+        firstNumber = Math.round(operate(storeOperatorValue, firstNumber, nextNumber) * 1000) / 1000;
         nextNumber = firstNumber;
         displayText.textContent = firstNumber;
         firstNumber = "";
