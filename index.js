@@ -106,5 +106,12 @@ clearButton.addEventListener("click", () => {
 });
 
 deleteButton.addEventListener("click", () => {
-    alert("This will delete the last digit in the entered number");
+    console.log(numberArray);
+    numberArray.pop(); //remove the last index of the array'
+    if(numberArray.length === 0) {
+        numberArray[0] = 0; // if deleting the last index in the array leaves an empty array, change the array to have a 0th index with value 0 to update both first number and display correctly
+    }
+    console.log(numberArray);
+    firstNumber = parseInt(numberArray.join(''));
+    displayText.textContent = firstNumber; 
 })
